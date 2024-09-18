@@ -9,7 +9,7 @@ export const signup=async (req,res)=>{
             return res.status(400).json({error:"passwords do not match"});
         }
         const user =await User.findOne({username})
-        if(user===username){
+        if(user){
             return res.status(400).json({error:"Username already exists"});
         }
         const salt=await bcrypt.genSalt(10);
